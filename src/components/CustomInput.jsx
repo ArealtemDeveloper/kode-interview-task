@@ -14,6 +14,7 @@ export const CustomInput = () => {
             <Inp 
                 placeholder='Введите имя, тэг, почту...'
                 onFocus={() => setFocus(true)}
+                onBlur={() => setFocus(false)}
                 type="text" 
                 value={value} 
                 onChange={e => setValue(e.target.value)}/>
