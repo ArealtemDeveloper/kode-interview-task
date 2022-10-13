@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+.line {
+  background-color: #C3C3C6;
+  size: 0.33px;
+  margin: 0;
+}
+
+h3 {
+  padding: 5px;
+  font-weight: 500;
+  cursor: pointer;
+  color: #97979B
+}
+
+::placeholder {
+  color: #C3C3C6;
+}
+
+.active {
+  border-bottom:3px solid #6534FF;
+  color: black;
+}
