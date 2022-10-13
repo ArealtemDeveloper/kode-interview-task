@@ -17,7 +17,7 @@ export const UsersContainer = () => {
                 : data.map(user =>
                     (
                         <Link 
-                            to={'/:id'}  
+                            to={`/:${user.id}`}  
                             key={user.id} 
                             style={{textDecoration: 'none', color: 'black'}}>
                             <UserWrapper>

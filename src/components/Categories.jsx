@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
 export const Categories = () => {
@@ -11,14 +11,15 @@ export const Categories = () => {
         {id: 5, name : 'Android'},
     ]
 
+    const [activeIndex, setActiveIndex] = useState(0) 
 
     return (
         <>
             <Groups>
                 {groups.map(item => 
-                // Использую index умышленно, так как изменения групп внутри
-                // приложения не планируется
                     <h3 
+                        onClick = {() => setActiveIndex(item.id)}
+                        className={activeIndex === item.id ? 'active' : ''}
                         key={item.id} >
                         {item.name}
                     </h3>

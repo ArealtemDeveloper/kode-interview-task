@@ -7,11 +7,13 @@ import { UserPage } from "./pages/UserPage";
 import { fetchUsers } from "./store/userSlice";
 
 
+
 function App() {
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(fetchUsers());
     }, [dispatch]);
+
 
     return (
         <div className="App">

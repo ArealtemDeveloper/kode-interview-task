@@ -27,3 +27,11 @@ h3 {
   border-bottom:3px solid #6534FF;
   color: black;
 }
+
+button {
+  border: none;
+  background: none;
+  color: #6534FF;
+  font-weight: 600;
+  cursor: pointer;
+}
