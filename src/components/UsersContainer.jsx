@@ -1,14 +1,16 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
 import Skeleton from './Skeleton'
 import { Link } from 'react-router-dom'
+import {filterUsers} from '../store/userSlice';
 
 
 export const UsersContainer = () => {
 
     const data = useSelector(state => state.users.users);
     const { status } = useSelector(state => state.users);
+    const dispatch = useDispatch()
       
     return (
         <Wrapper>
@@ -17,14 +19,14 @@ export const UsersContainer = () => {
                 : data.map(user =>
                     (
                         <Link 
-                            to={`/:${user.id}`}  
+                            to={`/:id${user.id}`}  
                             key={user.id} 
                             style={{textDecoration: 'none', color: 'black'}}>
-                            <UserWrapper>
+                            <UserWrapper onClick={() => dispatch(filterUsers(user.id))}>
                                 <Avatar src={user.avatarUrl} alt="avatar" />
                                 <div>
                                     <MainInfo>
-                                        <Name>{user.firstName}{user.lastName}</Name>
+                                        <Name>{`${user.firstName} ${user.lastName}`}</Name>
                                         <Tag>{user.userTag}</Tag>
                                     </MainInfo>
                                     <Prof>{user.position}</Prof>

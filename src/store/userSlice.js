@@ -29,6 +29,15 @@ const userSlice = createSlice({
         error: null,
     },
     reducers: {
+        filterUsers(state, action) {
+            state.users = state.users.filter(user => user.id.includes(action.payload));
+        },
+        searchUsersByName(state, action) {
+            if(action.payload !== '') {
+                state.users = state.users.filter
+                (user => user.firstName.includes(action.payload))
+            }
+        },
     },
     extraReducers: 
     {
@@ -44,6 +53,6 @@ const userSlice = createSlice({
     },
 });
 
-export const {} = userSlice.actions;
+export const {filterUsers,searchUsersByName } = userSlice.actions;
 
 export default userSlice.reducer;

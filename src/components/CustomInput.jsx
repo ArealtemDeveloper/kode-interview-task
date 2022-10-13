@@ -2,11 +2,20 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { BsSearch } from 'react-icons/bs'
 import { MdSort } from 'react-icons/md'
+import { useDispatch } from 'react-redux'
+import { searchUsersByName } from '../store/userSlice'
 
 export const CustomInput = () => {
 
     const [value, setValue] = useState('')
     const [focus, setFocus] = useState(false)
+
+    const dispatch = useDispatch()
+
+    const inputSearch = (e) => {
+        setValue(e.target.value)
+        dispatch(searchUsersByName(e.target.value))
+    }
 
     return (
         <InpWrapper>
@@ -17,7 +26,7 @@ export const CustomInput = () => {
                 onBlur={() => setFocus(false)}
                 type="text" 
                 value={value} 
-                onChange={e => setValue(e.target.value)}/>
+                onChange={inputSearch}/>
             <MdSort style={{color: '#C3C3C6'}}/>
         </InpWrapper>
         

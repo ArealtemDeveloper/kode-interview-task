@@ -11,14 +11,14 @@ export const Categories = () => {
         {id: 5, name : 'Android'},
     ]
 
-    const [activeIndex, setActiveIndex] = useState(0) 
+    const [activeIndex, setActiveIndex] = useState(1) 
 
     return (
         <>
             <Groups>
                 {groups.map(item => 
                     <h3 
-                        onClick = {() => setActiveIndex(item.id)}
+                        onClick = {() => setActiveIndex(item.id)}   
                         className={activeIndex === item.id ? 'active' : ''}
                         key={item.id} >
                         {item.name}
