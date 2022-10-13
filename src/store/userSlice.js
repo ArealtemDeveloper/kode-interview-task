@@ -32,6 +32,7 @@ const userSlice = createSlice({
     reducers: {
         filterUsers(state, action) {
             state.users = state.usersContainer.filter(user => user.id.includes(action.payload));
+            state.users = state.usersContainer
         },
         searchUsersByName(state, action) {
             if(action.payload !== '') {
