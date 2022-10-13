@@ -1,28 +1,38 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import styled from 'styled-components'
+import Skeleton from './Skeleton'
+import { Link } from 'react-router-dom'
 
 
 export const UsersContainer = () => {
 
     const data = useSelector(state => state.users.users);
-    
+    const { status } = useSelector(state => state.users);
+      
     return (
         <Wrapper>
-            {data[0].map(user => {
-                return (
-                    <UserWrapper key={user.id}>
-                        <Avatar src={user.avatarUrl} alt="avatar" />
-                        <div>
-                            <MainInfo>
-                                <Name>{user.firstName}{user.lastName}</Name>
-                                <Tag>{user.userTag}</Tag>
-                            </MainInfo>
-                            <Prof>{user.position}</Prof>
-                        </div>
-                    </UserWrapper>
-                )
-            })}
+            {   status === 'loading' 
+                ? [...new Array(10)].map((_, index) => <Skeleton key={index}/>)
+                : data.map(user =>
+                    (
+                        <Link 
+                            to={'/:id'}  
+                            key={user.id} 
+                            style={{textDecoration: 'none', color: 'black'}}>
+                            <UserWrapper>
+                                <Avatar src={user.avatarUrl} alt="avatar" />
+                                <div>
+                                    <MainInfo>
+                                        <Name>{user.firstName}{user.lastName}</Name>
+                                        <Tag>{user.userTag}</Tag>
+                                    </MainInfo>
+                                    <Prof>{user.position}</Prof>
+                                </div>
+                            </UserWrapper>
+                        </Link>
+                    )
+                )}
         </Wrapper>
     )
 }

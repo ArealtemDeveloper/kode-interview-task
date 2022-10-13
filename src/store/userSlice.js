@@ -9,9 +9,8 @@ export const fetchUsers = createAsyncThunk(
             // eslint-disable-next-line max-len
             ('https://stoplight.io/mocks/kode-frontend-team/koder-stoplight/86566464/users?__example=all');
             const { items } = data
-            return [...items];
+            return items;
         } catch (error) {
-            console.log('a')
             return rejectWithValue(error.message);
         }
     }
@@ -29,7 +28,8 @@ const userSlice = createSlice({
         status: null,
         error: null,
     },
-    reducers: {},
+    reducers: {
+    },
     extraReducers: 
     {
         [fetchUsers.pending]: (state) => {
@@ -38,7 +38,7 @@ const userSlice = createSlice({
         },
         [fetchUsers.fulfilled]: (state, action) => {
             state.status = 'resolved';
-            state.users.push(action.payload);
+            state.users = action.payload;
         },
         [fetchUsers.rejected]: setError,
     },

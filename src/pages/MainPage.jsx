@@ -1,7 +1,13 @@
-import React from 'react'
+import { Header } from '../components/Header'
+import { UsersContainer } from '../components/UsersContainer'
 
 export const MainPage = () => {
+
     return (
-        <div>MainPage</div>
+        <div>
+            <Header/>
+            <UsersContainer/>
+        </div>
     )
 }
+

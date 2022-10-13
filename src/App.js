@@ -1,13 +1,13 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { Route, Routes } from "react-router-dom";
 
-import { Header } from "./components/Header";
-import { UsersContainer } from "./components/UsersContainer";
+import { MainPage } from "./pages/MainPage";
+import { UserPage } from "./pages/UserPage";
 import { fetchUsers } from "./store/userSlice";
 
 
 function App() {
-
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(fetchUsers());
@@ -15,8 +15,10 @@ function App() {
 
     return (
         <div className="App">
-            <Header/>
-            <UsersContainer/>
+            <Routes>
+                <Route path="/" element={<MainPage/>}/>
+                <Route path="/:id" element={<UserPage/>} />
+            </Routes>
         </div>
     )
 }
