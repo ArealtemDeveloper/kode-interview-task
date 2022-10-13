@@ -25,17 +25,21 @@ const userSlice = createSlice({
     name: 'users',
     initialState: {
         users: [],
+        usersContainer: [],
         status: null,
         error: null,
     },
     reducers: {
         filterUsers(state, action) {
-            state.users = state.users.filter(user => user.id.includes(action.payload));
+            state.users = state.usersContainer.filter(user => user.id.includes(action.payload));
         },
         searchUsersByName(state, action) {
             if(action.payload !== '') {
                 state.users = state.users.filter
                 (user => user.firstName.includes(action.payload))
+                
+            }else{
+                state.users = state.usersContainer
             }
         },
     },
@@ -48,6 +52,7 @@ const userSlice = createSlice({
         [fetchUsers.fulfilled]: (state, action) => {
             state.status = 'resolved';
             state.users = action.payload;
+            state.usersContainer = action.payload;
         },
         [fetchUsers.rejected]: setError,
     },
